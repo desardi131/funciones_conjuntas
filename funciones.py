@@ -45,3 +45,35 @@ def deteccion_outliers(data,features):
     multiples_outliers = list(i for i, v in outlier_indices.items() if v > 2)
     
     return multiples_outliers
+
+# Función 1: Lista de listas
+
+def lista_de_listas(lista):
+    '''
+    La función lista_de_listas crea una lista individual por cada elemento de la lista argumento, 
+    pasando asi a una lisa cuyos elementos son listas con un solo elemento
+
+    esto es especialmente util para poder trabajar con strings de varias palabras
+    dentro de una lista.
+
+    ejemplo:
+        lista = ['estoy programando en python','hola mundo',1234]
+        lista_de_listas(lista)
+        return [['estoy programando en python'],['hola mundo'],[1234]]
+
+    Args:
+        lista: introducir una lista independientemente de los elementos existentes dentro
+
+    Return:
+        lista_vacia: una lista de sublistas, cada sublista es un elemento de la lista original.
+        
+    '''
+    lista_vacia = []
+    for i in range((len(lista))):
+        lista_vacia.append([]) # introduce una lista vacia en lista_vacia por cada vuelta del bucle
+
+    for n,i in enumerate(lista_vacia):
+    
+        i.append(lista[n]) # en cada valor de lista vacia(i) realiza un append del elemento correspondiente de lista, indicando su indice mediante n
+
+    return lista_vacia
