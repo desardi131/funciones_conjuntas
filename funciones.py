@@ -77,3 +77,31 @@ def lista_de_listas(lista):
         i.append(lista[n]) # en cada valor de lista vacia(i) realiza un append del elemento correspondiente de lista, indicando su indice mediante n
 
     return lista_vacia
+
+# funcion para comprobar el ratio de valores nulos en una columna o en un dataframe
+def ratio_nulos(data, features):
+    '''
+    funcion que calcula el porcentaje de valores nulos 
+    para cada columna de un dataframe.
+
+    Args:
+        data(DataFrame): introduce un dataframe completo
+        features(columnas): las columnas del dataframe, podemos usar dataframe.columns.
+
+    return:
+        devuelve un dataframe en el cual los indices son los nombres de las columnas 
+        y una unica columna con los ratios de valores nulos asignados cada uno a su 
+        columna correspondiente. 
+    '''
+
+    import pandas as pd
+
+    diccionario ={}
+    for c in features:
+        
+        ratio = (len(data[c][data[c].isnull()== True])/len(data[c]))*100
+        
+        diccionario[c] = round(ratio,2)
+
+    return pd.DataFrame(diccionario.values(),columns=['null_ratio'],index=diccionario.keys())
+
